@@ -1,5 +1,12 @@
 // Select color input
+
 // Select size input
+$('form#sizePicker').submit(function(event) {
+  event.preventDefault();
+  console.log($('#input_height').value);
+  console.log($('#input_width').value);
+  makeGrid();
+});
 
 // When size is submitted by the user, call makeGrid()
 
@@ -23,4 +30,4 @@ function makeGrid() {
 }
 
 // test makeGrid function
-$(makeGrid);
+// $(makeGrid);
