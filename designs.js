@@ -1,24 +1,23 @@
 // Select color input
 
 // Select size input
-$('form#sizePicker').submit(function(event) {
+$('#sizePicker').submit(function(event) {
   event.preventDefault();
-  console.log($('#input_height').val());
-  console.log($('#input_width').val());
-  makeGrid();
+  // console.log($('#input_height').val());
+  // console.log($('#input_width').val());
+  const height = $('#input_height').val();
+  const width = $('#input_width').val();
+  makeGrid(height, width);
 });
 
 // When size is submitted by the user, call makeGrid()
 
-function makeGrid() {
+function makeGrid(height, width) {
 
 // Your code goes here!
-  let height = $('#input_height').val();
-  let width = $('#input_width').val();
-  // console.log(height,width);
   let currentRow, currentCol;
   const canvasRow = $('#pixel_canvas tr').length;
-  const canvasCol = $('#pixel_canvas tr td').length;
+  const canvasCol = $('#r0 td').length;
   // console.log(canvasRow, canvasCol);
   // add or remove rows
   if (height > canvasRow) {
@@ -29,7 +28,7 @@ function makeGrid() {
       for (let c = 0; c < width; c++) {
           currentRow.append('<td></td>');
           currentCol = $('#pixel_canvas td').eq(c);
-          currentCol.attr('id','c'+c);
+          currentCol.addClass('c1');
       }
     }
   }
@@ -41,13 +40,16 @@ function makeGrid() {
     }
   }
   // add or remove columns
+  // console.log('height = '+height+', canvasRow = '+canvasRow);
+  // console.log('width = '+width+', canvasCol = '+canvasCol);
+  const updateRowLimit = (height < canvasRow) ? height : canvasRow;
   if (width > canvasCol) {
-    for (let r = 0; r < canvasRow; r++) {
+    for (let r = 0; r < updateRowLimit; r++) {
       currentRow = $('#pixel_canvas tr').eq(r);
       for (let c = canvasCol; c < width; c++) {
           currentRow.append('<td></td>');
           currentCol = $('#pixel_canvas td').eq(c);
-          currentCol.attr('id','c'+c);
+          currentCol.addClass('c'+c);
       }
     }
   }
