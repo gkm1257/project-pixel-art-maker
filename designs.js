@@ -17,18 +17,15 @@ function makeGrid(height, width) {
 // Your code goes here!
   let currentRow, currentCol;
   const canvasRow = $('#pixel_canvas tr').length;
-  const canvasCol = $('#r0 td').length;
+  const canvasCol = $('tr:nth-child(1) td').length;
   // console.log(canvasRow, canvasCol);
   // add or remove rows
   if (height > canvasRow) {
     for (let r = canvasRow; r < height; r++) {
       $('#pixel_canvas').append('<tr></tr>');
       currentRow = $('#pixel_canvas tr').eq(r);
-      currentRow.attr('id','r'+r);
       for (let c = 0; c < width; c++) {
           currentRow.append('<td></td>');
-          currentCol = $('#pixel_canvas td').eq(c);
-          currentCol.addClass('c1');
       }
     }
   }
@@ -48,14 +45,15 @@ function makeGrid(height, width) {
       currentRow = $('#pixel_canvas tr').eq(r);
       for (let c = canvasCol; c < width; c++) {
           currentRow.append('<td></td>');
-          currentCol = $('#pixel_canvas td').eq(c);
-          currentCol.addClass('c'+c);
       }
     }
   }
   else {
-    for (let c = canvasCol; c > width; c--) {
-        $('#pixel_canvas td').last().remove();
+    for (let r = 0; r < updateRowLimit; r++) {
+      currentRow = $('#pixel_canvas tr').eq(r);
+      for (let c = canvasCol; c > width; c--) {
+          currentRow.find('td').last().remove();
+      }
     }
   }
 }
