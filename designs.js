@@ -1,4 +1,35 @@
 // Select color input
+// Update pattern color after color changed
+$('#colorPicker').change(function() {
+  const color = $('#colorPicker').val();
+  $('#pixel_canvas td').each(function() {
+    if (rgb2hex($(this).css('backgroundColor')) != '#ffffff') {
+      $(this).css('backgroundColor', color);
+    }
+  });
+});
+
+// Edit the pattern pixel_canvas
+$('#pixel_canvas').on('click', 'td', function() {
+  const color = $('#colorPicker').val();
+  // console.log(rgb2hex($(this).css('backgroundColor')));
+  if (rgb2hex($(this).css('backgroundColor')) === '#ffffff') {
+    $(this).css('backgroundColor', color);
+  }
+  else {
+    $(this).css('backgroundColor', '#fff');
+  }
+});
+
+//Function to convert hex format to a rgb color
+//Source: http://wowmotty.blogspot.tw/2009/06/convert-jquery-rgb-output-to-hex-color.html
+function rgb2hex(orig){
+ var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+ return (rgb && rgb.length === 4) ? "#" +
+  ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+  ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+  ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
+}
 
 // Select size input
 $('#sizePicker').submit(function(event) {
@@ -26,6 +57,7 @@ function makeGrid(height, width) {
       currentRow = $('#pixel_canvas tr').eq(r);
       for (let c = 0; c < width; c++) {
           currentRow.append('<td></td>');
+          currentRow.find('td').last().css('backgroundColor', 'white');
       }
     }
   }
@@ -45,6 +77,7 @@ function makeGrid(height, width) {
       currentRow = $('#pixel_canvas tr').eq(r);
       for (let c = canvasCol; c < width; c++) {
           currentRow.append('<td></td>');
+          currentRow.find('td').last().css('backgroundColor', 'white');
       }
     }
   }
