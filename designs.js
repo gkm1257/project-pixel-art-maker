@@ -1,13 +1,4 @@
 // Select color input
-// Update pattern color after color changed
-$('#colorPicker').change(function() {
-  const color = $('#colorPicker').val();
-  $('#pixel_canvas td').each(function() {
-    if (rgb2hex($(this).css('backgroundColor')) != '#ffffff') {
-      $(this).css('backgroundColor', color);
-    }
-  });
-});
 
 // Edit the pattern pixel_canvas
 $('#pixel_canvas').on('click', 'td', function() {
