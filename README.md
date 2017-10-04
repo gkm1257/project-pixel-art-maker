@@ -3,14 +3,15 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Contributing](#contributing)
 
 ## Instructions
 
-To get started, open `designs.js` and start building out the app's functionality.
+To create a `Design Canvas`, input the `Grid Height` and `Grid Width` between 1 to 50 then click `Submit`.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+By clicking on the cell, you can toggle the background color of the cell between to the color you picked or the initial color `rgba(0, 0, 0, 0)`.
 
-## Contributing
+If you want to clear the whole `Design Canvas`, just click `Submit` again with the same `Grid Height` and `Grid Width`.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+---
+
+**Have fun creating your own pixel art!!!!** :smile:
