@@ -32,20 +32,18 @@ function rgb2hex(orig){
 }
 
 // Select size input
-$('#sizePicker').submit(function(event) {
-  event.preventDefault();
-  // console.log($('#input_height').val());
-  // console.log($('#input_width').val());
-  const height = $('#input_height').val();
-  const width = $('#input_width').val();
-  makeGrid(height, width);
-});
+const height = document.getElementById("input_height");
+const width  = document.getElementById("input_width");
 
 // When size is submitted by the user, call makeGrid()
+$('#sizePicker').submit(function(event) {
+  event.preventDefault();
+  makeGrid(height.value, width.value);
+});
+
 
 function makeGrid(height, width) {
 
-// Your code goes here!
   let currentRow, currentCol;
   const canvasRow = $('#pixel_canvas tr').length;
   const canvasCol = $('tr:nth-child(1) td').length;
